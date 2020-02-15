@@ -1,5 +1,6 @@
 package com.star.support.redis;
 
+import com.star.spring.SpringContextHolder;
 import io.lettuce.core.api.StatefulRedisConnection;
 
 import java.util.Map;
@@ -7,15 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class RedisConnections {
 
-    private static final Map<Integer, StatefulRedisConnection<String, String>> REDIS_CONNECTION_MAP = new ConcurrentHashMap<>();
+    private volatile static RedisConnectionContainer redisConnectionContainer;
 
-    public static StatefulRedisConnection<String, String> getConnection(int database) {
-        return REDIS_CONNECTION_MAP.computeIfAbsent(database, RedisConnections::initConnection);
+    public static StatefulRedisConnection<String, String> getConnection() {
+        if (redisConnectionContainer == null) {
+            synchronized (RedisConnections.class) {
+                if (redisConnectionContainer == null) {
+                    redisConnectionContainer = SpringContextHolder.getBean(RedisConnectionContainer.class);
+                }
+            }
+        }
+        return redisConnectionContainer == null ? null : redisConnectionContainer.getConnection();
     }
-
-    private static StatefulRedisConnection<String, String> initConnection(int database) {
-        return RedisClientFactory.getClient(database).connect();
-    }
-
 
 }

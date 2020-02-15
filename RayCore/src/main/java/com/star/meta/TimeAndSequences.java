@@ -2,15 +2,17 @@ package com.star.meta;
 
 import com.star.constant.MetaConstants;
 
-import javax.inject.Inject;
 import java.util.concurrent.atomic.AtomicReference;
 
 public final class TimeAndSequences {
 
     private static volatile AtomicReference<TimeStampAndSequence> atomicReference;
 
-    @Inject
     private InitTimeStampFactory initTimeStampFactory;
+
+    public TimeAndSequences(InitTimeStampFactory initTimeStampFactory) {
+        this.initTimeStampFactory = initTimeStampFactory;
+    }
 
     public TimeStampAndSequence calculate() {
         initTimeStampAndSequence();

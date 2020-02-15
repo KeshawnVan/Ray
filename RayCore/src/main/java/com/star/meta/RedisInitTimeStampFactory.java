@@ -21,17 +21,17 @@ public class RedisInitTimeStampFactory implements InitTimeStampFactory {
                     .map(TimeStampAndSequence::getTimestamp)
                     .max(Comparator.comparing(x -> x))
                     .orElse(0L);
-            String remoteValue = RedisConnections.getConnection(6).sync().get(LAST_TIME);
+            String remoteValue = RedisConnections.getConnection().sync().get(LAST_TIME);
             long remoteTimeStamp = parseLong(remoteValue);
             if (maxTimeStamp > remoteTimeStamp) {
-                RedisConnections.getConnection(6).sync().set(LAST_TIME, Objects.toString(maxTimeStamp));
+                RedisConnections.getConnection().sync().set(LAST_TIME, Objects.toString(maxTimeStamp));
             }
-        }, 0, 60 * 1000);
+        }, 60 * 1000, 60 * 1000);
     }
 
     @Override
     public long getTimeStamp() {
-        String value = RedisConnections.getConnection(6).sync().get(LAST_TIME);
+        String value = RedisConnections.getConnection().sync().get(LAST_TIME);
         return parseLong(value);
     }
 

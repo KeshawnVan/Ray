@@ -23,7 +23,7 @@ public class RedisMachineIdFactory implements MachineIdFactory {
     public RedisMachineIdFactory() {
         TimerUtil.schedule(() -> {
             if (machineId != null) {
-                RedisConnections.getConnection(6).sync().expire(LOCK_MACHINE + machineId, 10 * 60);
+                RedisConnections.getConnection().sync().expire(LOCK_MACHINE + machineId, 10 * 60);
             }
         }, 0, 5 * 60 * SECONDS);
     }

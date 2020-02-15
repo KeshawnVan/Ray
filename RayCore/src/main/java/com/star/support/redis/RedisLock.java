@@ -68,13 +68,13 @@ public class RedisLock implements Lock {
     }
 
     public boolean isLock() {
-        return RedisConnections.getConnection(6).sync().exists(lockKey) > 0;
+        return RedisConnections.getConnection().sync().exists(lockKey) > 0;
     }
 
     public boolean lock() {
         long waitMillis = timeoutMsecs;
         value = UUID.randomUUID().toString();
-        RedisCommands<String, String> redisCommands = RedisConnections.getConnection(6).sync();
+        RedisCommands<String, String> redisCommands = RedisConnections.getConnection().sync();
         while (waitMillis >= 0) {
             long startNanoTime = System.nanoTime();
             String lockResult = redisCommands.set(lockKey, value, SetArgs.Builder.nx().px(expireMsecs));
@@ -98,7 +98,7 @@ public class RedisLock implements Lock {
 
     public void unlock() {
         if (!locked) return;
-        RedisCommands<String, String> redisCommands = RedisConnections.getConnection(6).sync();
+        RedisCommands<String, String> redisCommands = RedisConnections.getConnection().sync();
         Object result = redisCommands.eval(UNLOCK_SCRIPT, ScriptOutputType.INTEGER, new String[]{lockKey}, value);
         if (CastUtil.castInt(result) < 0) {
 
