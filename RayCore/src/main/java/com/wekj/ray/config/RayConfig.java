@@ -1,7 +1,6 @@
 package com.wekj.ray.config;
 
 import com.wekj.ray.generator.IdGenerator;
-import com.star.meta.*;
 import com.wekj.ray.meta.*;
 import com.wekj.ray.properties.RayRedisProperties;
 import com.wekj.ray.spring.SpringContextHolder;
