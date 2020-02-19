@@ -8,10 +8,10 @@ package com.wekj.ray.constant;
  */
 public class MetaConstants {
     /**
-     * 现在是2020-03-01
+     * 现在是2020-02-19,上线前需要修改
      * 描述 : 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
      */
-    public static final long ORIGIN_TIME_STAMP = 1582992000000L;
+    public static final long ORIGIN_TIME_STAMP = 1582041600000L;
 
     /**
      * 描述 : 机器标识位数
