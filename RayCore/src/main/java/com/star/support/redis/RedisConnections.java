@@ -3,9 +3,9 @@ package com.star.support.redis;
 import com.star.spring.SpringContextHolder;
 import io.lettuce.core.api.StatefulRedisConnection;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
+/**
+ * @author liuna
+ */
 public class RedisConnections {
 
     private volatile static RedisConnectionContainer redisConnectionContainer;
@@ -18,7 +18,10 @@ public class RedisConnections {
                 }
             }
         }
-        return redisConnectionContainer == null ? null : redisConnectionContainer.getConnection();
+        if (redisConnectionContainer == null){
+            throw new RuntimeException("redis not init");
+        }
+        return redisConnectionContainer.getConnection();
     }
 
 }

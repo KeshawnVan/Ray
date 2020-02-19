@@ -2,6 +2,9 @@ package com.star.support.redis;
 
 import io.lettuce.core.api.StatefulRedisConnection;
 
+/**
+ * @author liuna
+ */
 public class RedisConnectionContainer {
 
     private StatefulRedisConnection<String, String> connection;

@@ -120,8 +120,12 @@ public final class StringUtil {
     }
 
     public static boolean isJson(String content) {
-        if (isEmpty(content)) return false;
-        if (content.startsWith("{") && content.endsWith("}")) return true;
+        if (isEmpty(content)) {
+            return false;
+        }
+        if (content.startsWith("{") && content.endsWith("}")) {
+            return true;
+        }
         return content.startsWith("[") && content.endsWith("]");
     }
 

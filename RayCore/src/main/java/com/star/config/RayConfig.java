@@ -15,6 +15,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
 
+/**
+ * @author liuna
+ */
 @Configuration
 public class RayConfig {
 

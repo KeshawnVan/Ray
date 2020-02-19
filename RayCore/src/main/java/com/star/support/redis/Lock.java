@@ -1,5 +1,8 @@
 package com.star.support.redis;
 
+/**
+ * @author liuna
+ */
 public interface Lock extends AutoCloseable {
 
     boolean lock();

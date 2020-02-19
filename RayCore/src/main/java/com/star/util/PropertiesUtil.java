@@ -1,7 +1,3 @@
-/**
- * @author keshawn
- * @date 2017/11/7
- */
 package com.star.util;
 
 import java.io.FileNotFoundException;
@@ -11,6 +7,9 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Properties;
 
+/**
+ * @author liuna
+ */
 public final class PropertiesUtil {
 
     private PropertiesUtil() {
@@ -18,7 +17,9 @@ public final class PropertiesUtil {
 
     public static Properties loadProperties(String filePath) {
         try (InputStream inputStream = getClassLoader().getResourceAsStream(filePath);) {
-            if (inputStream == null) throw new FileNotFoundException(filePath + "file not found");
+            if (inputStream == null) {
+                throw new FileNotFoundException(filePath + "file not found");
+            }
             Properties properties = new Properties();
             properties.load(inputStream);
             return properties;

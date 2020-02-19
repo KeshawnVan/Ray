@@ -4,6 +4,9 @@ import com.star.constant.MetaConstants;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * @author liuna
+ */
 public final class TimeAndSequences {
 
     private static volatile AtomicReference<TimeStampAndSequence> atomicReference;

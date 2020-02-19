@@ -1,19 +1,22 @@
 package com.star.meta;
 
 import com.star.support.redis.RedisConnections;
-import com.star.util.TimerUtil;
+import com.star.util.ScheduleUtil;
 
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
+/**
+ * @author liuna
+ */
 public class RedisInitTimeStampFactory implements InitTimeStampFactory {
 
     private static final String LAST_TIME = "last:time";
 
     public RedisInitTimeStampFactory() {
-        TimerUtil.schedule(() -> {
+        ScheduleUtil.schedule(() -> {
             AtomicReference<TimeStampAndSequence> atomicReference = TimeAndSequences.getAtomicReference();
             Long maxTimeStamp = Stream.of(atomicReference)
                     .filter(Objects::nonNull)

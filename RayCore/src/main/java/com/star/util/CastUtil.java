@@ -1,8 +1,7 @@
 package com.star.util;
 
 /**
- * @author keshawn
- * @date 2017/11/7
+ * @author liuna
  */
 public final class CastUtil {
 
@@ -24,18 +23,17 @@ public final class CastUtil {
     }
 
     public static double castDouble(Object object, double defaultValue) {
-        double doubleValue = defaultValue;
         if (object != null) {
             String stringValue = castString(object);
             if (StringUtil.isNotEmpty(stringValue)) {
                 try {
-                    doubleValue = Double.parseDouble(stringValue);
+                    return Double.parseDouble(stringValue);
                 } catch (NumberFormatException e) {
-                    doubleValue = defaultValue;
+                    return defaultValue;
                 }
             }
         }
-        return doubleValue;
+        return defaultValue;
     }
 
     public static long castLong(Object object) {
@@ -43,18 +41,17 @@ public final class CastUtil {
     }
 
     public static long castLong(Object object, long defaultValue) {
-        long longValue = defaultValue;
         if (object != null) {
             String stringValue = castString(object);
             if (StringUtil.isNotEmpty(stringValue)) {
                 try {
-                    longValue = Long.parseLong(stringValue);
+                    return Long.parseLong(stringValue);
                 } catch (NumberFormatException e) {
-                    longValue = defaultValue;
+                    return defaultValue;
                 }
             }
         }
-        return longValue;
+        return defaultValue;
     }
 
     public static int castInt(Object object) {
@@ -62,18 +59,17 @@ public final class CastUtil {
     }
 
     public static int castInt(Object object, int defaultValue) {
-        int intValue = defaultValue;
         if (object != null) {
             String stringValue = castString(object);
             if (StringUtil.isNotEmpty(stringValue)) {
                 try {
-                    intValue = Integer.parseInt(stringValue);
+                    return Integer.parseInt(stringValue);
                 } catch (NumberFormatException e) {
-                    intValue = defaultValue;
+                    return defaultValue;
                 }
             }
         }
-        return intValue;
+        return defaultValue;
     }
 
     public static boolean castBoolean(Object object) {

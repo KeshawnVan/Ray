@@ -4,7 +4,7 @@ import com.star.constant.MetaConstants;
 import com.star.support.redis.Lock;
 import com.star.support.redis.RedisConnections;
 import com.star.support.redis.RedisLock;
-import com.star.util.TimerUtil;
+import com.star.util.ScheduleUtil;
 
 /**
  * @program: Ray
@@ -21,7 +21,7 @@ public class RedisMachineIdFactory implements MachineIdFactory {
     private volatile Long machineId;
 
     public RedisMachineIdFactory() {
-        TimerUtil.schedule(() -> {
+        ScheduleUtil.schedule(() -> {
             if (machineId != null) {
                 RedisConnections.getConnection().sync().expire(LOCK_MACHINE + machineId, 10 * 60);
             }
@@ -41,7 +41,9 @@ public class RedisMachineIdFactory implements MachineIdFactory {
     }
 
     private long lockId(long id, int tryTime) {
-        if (tryTime > MetaConstants.MAX_MACHINE_ID) throw new RuntimeException("cannot get machine id");
+        if (tryTime > MetaConstants.MAX_MACHINE_ID) {
+            throw new RuntimeException("cannot get machine id");
+        }
         Lock lock = new RedisLock(LOCK_MACHINE + id, 0, 10 * 60 * SECONDS);
         return lock.lock() ? id : lockId((id + 1) & MetaConstants.MAX_MACHINE_ID, tryTime + 1);
     }

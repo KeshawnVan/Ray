@@ -3,6 +3,9 @@ package com.star.meta;
 import java.util.Objects;
 import java.util.StringJoiner;
 
+/**
+ * @author liuna
+ */
 public class TimeStampAndSequence {
 
     private long timestamp;

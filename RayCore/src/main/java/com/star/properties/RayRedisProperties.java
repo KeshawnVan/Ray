@@ -1,5 +1,8 @@
 package com.star.properties;
 
+/**
+ * @author liuna
+ */
 public class RayRedisProperties {
 
     private String host;

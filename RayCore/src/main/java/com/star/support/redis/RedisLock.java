@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Redis distributed lock implementation.
+ * @author liuna
  */
 public class RedisLock implements Lock {
 
@@ -63,6 +64,7 @@ public class RedisLock implements Lock {
         this.expireMsecs = expireMsecs;
     }
 
+    @Override
     public String getLockKey() {
         return lockKey;
     }
@@ -71,6 +73,7 @@ public class RedisLock implements Lock {
         return RedisConnections.getConnection().sync().exists(lockKey) > 0;
     }
 
+    @Override
     public boolean lock() {
         long waitMillis = timeoutMsecs;
         value = UUID.randomUUID().toString();
@@ -79,7 +82,9 @@ public class RedisLock implements Lock {
             long startNanoTime = System.nanoTime();
             String lockResult = redisCommands.set(lockKey, value, SetArgs.Builder.nx().px(expireMsecs));
             locked = OK.equals(lockResult);
-            if (locked || waitMillis == 0) return locked;
+            if (locked || waitMillis == 0) {
+                return locked;
+            }
             int sleepMillis = new Random().nextInt(100);
             sleep(sleepMillis);
             long escapedMillis = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanoTime);
@@ -96,8 +101,11 @@ public class RedisLock implements Lock {
         }
     }
 
+    @Override
     public void unlock() {
-        if (!locked) return;
+        if (!locked) {
+            return;
+        }
         RedisCommands<String, String> redisCommands = RedisConnections.getConnection().sync();
         Object result = redisCommands.eval(UNLOCK_SCRIPT, ScriptOutputType.INTEGER, new String[]{lockKey}, value);
         if (CastUtil.castInt(result) < 0) {
