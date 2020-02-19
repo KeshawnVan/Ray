@@ -1,4 +1,4 @@
-package com.star.constant;
+package com.wekj.ray.constant;
 
 /**
  * @program: Ray

@@ -1,12 +1,9 @@
-package com.star.generator;
+package com.wekj.ray.generator;
 
-import com.star.constant.MetaConstants;
-import com.star.meta.MachineIdFactory;
-import com.star.meta.TimeAndSequences;
-import com.star.meta.TimeStampAndSequence;
-
-import static com.star.constant.MetaConstants.MACHINE_ID_SHIFT;
-import static com.star.constant.MetaConstants.TIMESTAMP_LEFT_SHIFT;
+import com.wekj.ray.constant.MetaConstants;
+import com.wekj.ray.meta.MachineIdFactory;
+import com.wekj.ray.meta.TimeAndSequences;
+import com.wekj.ray.meta.TimeStampAndSequence;
 
 /**
  * @program: Ray
@@ -34,8 +31,8 @@ public final class IdGenerator {
         TimeStampAndSequence timeStampAndSequence = timeAndSequences.calculate();
 
         // 根据元数据生成ID
-        return ((timeStampAndSequence.getTimestamp() - MetaConstants.ORIGIN_TIME_STAMP) << TIMESTAMP_LEFT_SHIFT)
-                | (machineId << MACHINE_ID_SHIFT)
+        return ((timeStampAndSequence.getTimestamp() - MetaConstants.ORIGIN_TIME_STAMP) << MetaConstants.TIMESTAMP_LEFT_SHIFT)
+                | (machineId << MetaConstants.MACHINE_ID_SHIFT)
                 | timeStampAndSequence.getSequence();
     }
 

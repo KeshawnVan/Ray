@@ -1,4 +1,4 @@
-package com.star.meta;
+package com.wekj.ray.meta;
 
 import java.util.Objects;
 import java.util.StringJoiner;

@@ -1,6 +1,6 @@
-package com.star.support.redis;
+package com.wekj.ray.support.redis;
 
-import com.star.util.CastUtil;
+import com.wekj.ray.util.CastUtil;
 import io.lettuce.core.ScriptOutputType;
 import io.lettuce.core.SetArgs;
 import io.lettuce.core.api.sync.RedisCommands;

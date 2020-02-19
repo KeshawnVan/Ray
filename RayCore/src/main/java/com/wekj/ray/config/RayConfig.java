@@ -1,11 +1,12 @@
-package com.star.config;
+package com.wekj.ray.config;
 
-import com.star.generator.IdGenerator;
+import com.wekj.ray.generator.IdGenerator;
 import com.star.meta.*;
-import com.star.properties.RayRedisProperties;
-import com.star.spring.SpringContextHolder;
-import com.star.support.redis.RedisConnectionContainer;
-import com.star.util.StringUtil;
+import com.wekj.ray.meta.*;
+import com.wekj.ray.properties.RayRedisProperties;
+import com.wekj.ray.spring.SpringContextHolder;
+import com.wekj.ray.support.redis.RedisConnectionContainer;
+import com.wekj.ray.util.StringUtil;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.StatefulRedisConnection;

@@ -1,4 +1,4 @@
-package com.star.properties;
+package com.wekj.ray.properties;
 
 /**
  * @author liuna

@@ -1,4 +1,4 @@
-package com.star.util;
+package com.wekj.ray.util;
 
 /**
  * @author liuna

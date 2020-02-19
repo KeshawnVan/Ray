@@ -1,6 +1,6 @@
-package com.star.meta;
+package com.wekj.ray.meta;
 
-import com.star.constant.MetaConstants;
+import com.wekj.ray.constant.MetaConstants;
 
 import java.util.concurrent.atomic.AtomicReference;
 

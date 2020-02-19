@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.star.config.RayConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.wekj.ray.config.RayConfig

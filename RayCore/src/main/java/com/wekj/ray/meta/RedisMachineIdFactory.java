@@ -1,10 +1,10 @@
-package com.star.meta;
+package com.wekj.ray.meta;
 
-import com.star.constant.MetaConstants;
-import com.star.support.redis.Lock;
-import com.star.support.redis.RedisConnections;
-import com.star.support.redis.RedisLock;
-import com.star.util.ScheduleUtil;
+import com.wekj.ray.constant.MetaConstants;
+import com.wekj.ray.support.redis.Lock;
+import com.wekj.ray.support.redis.RedisConnections;
+import com.wekj.ray.support.redis.RedisLock;
+import com.wekj.ray.util.ScheduleUtil;
 
 /**
  * @program: Ray

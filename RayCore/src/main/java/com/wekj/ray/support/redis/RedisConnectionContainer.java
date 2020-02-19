@@ -1,4 +1,4 @@
-package com.star.support.redis;
+package com.wekj.ray.support.redis;
 
 import io.lettuce.core.api.StatefulRedisConnection;
 

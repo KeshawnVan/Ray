@@ -1,6 +1,6 @@
-package com.star.support.redis;
+package com.wekj.ray.support.redis;
 
-import com.star.spring.SpringContextHolder;
+import com.wekj.ray.spring.SpringContextHolder;
 import io.lettuce.core.api.StatefulRedisConnection;
 
 /**

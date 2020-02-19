@@ -1,7 +1,7 @@
-package com.star.meta;
+package com.wekj.ray.meta;
 
-import com.star.support.redis.RedisConnections;
-import com.star.util.ScheduleUtil;
+import com.wekj.ray.support.redis.RedisConnections;
+import com.wekj.ray.util.ScheduleUtil;
 
 import java.util.Comparator;
 import java.util.Objects;

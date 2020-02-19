@@ -1,4 +1,4 @@
-package com.star.spring;
+package com.wekj.ray.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
